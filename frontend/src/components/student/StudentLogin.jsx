@@ -11,12 +11,24 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useStudentContext } from '../../contexts/studentContext';
+import { useNavigate } from "react-router-dom";
+import { HOME_ROUTER } from '../../route';
 
+const formSchema = yup.object({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(8).max(50)
+})
 
 function StudentLogin() {
 
+    const { login } = useStudentContext()
+    const navigate = useNavigate();
+
     const form = useForm({
-        // resolver: yupResolver(formSchema),
+        resolver: yupResolver(formSchema),
         defaultValues: {
             email: 'bilalzouine9@gmail.com',
             password: '123456789'
@@ -25,15 +37,30 @@ function StudentLogin() {
     const { setError, formState: { isSubmitting }, control, handleSubmit } = form
 
 
-    const submitForm = (data) => {
-        console.log(data);
+    const submitForm = async (data) => {
+
+        try {
+            const response = await login(data.email, data.password)
+            console.log(response);
+
+            if (response.status == 204) {
+                navigate(HOME_ROUTER)
+            }
+
+        } catch ({ response }) {
+            if (response.status == 422) {
+                setError('email', {
+                    message: response.data.errors.email.join()
+                })
+            }
+        }
 
     }
 
     return (
 
         <Form {...form}>
-            <form onSubmit={handleSubmit(submitForm)} className='space-y-2 w-3/4 mx-auto bg-blue-400 p-3 rounded '>
+            <form onSubmit={handleSubmit(submitForm)} className='space-y-3 w-3/4 mx-auto bg-blue-400 p-3 rounded '>
 
                 <FormField
                     name="email"
@@ -58,11 +85,11 @@ function StudentLogin() {
                     control={control}
                     render={({ field }) => (
                         <>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel>Password</FormLabel>
                             <FormControl>
                                 <Input
-                                    type="text"
-                                    placeholder="Entre your email account"
+                                    type="password"
+                                    placeholder="Entre your Password account"
                                     {...field}
 
                                 />

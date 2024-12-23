@@ -27,7 +27,7 @@ function Layout() {
                 </div>
             </header>
 
-            <main className="container mx-auto ">
+            <main className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <Outlet />
 
             </main>
