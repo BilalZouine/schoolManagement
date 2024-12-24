@@ -13,16 +13,14 @@ function Layout() {
                     </div>
                     {/* Desktop Menu Links */}
                     <ul className="flex text-white ">
-                        <li><Link to={'/'} className="px-3 ml-5 py-2 text-decoration-none text-white">Home Page</Link></li>
-
-                        <li><Link to={'/STUDENT_DASHBOARD_ROUTER'} className="px-3 ml-5 py-2 text-decoration-none text-white">dashboard</Link></li>
-                        <li><Link to={'/STUDENT_LOGOUT_ROUTER'} className="px-3 ml-5 py-2 text-decoration-none text-white" >Logout</Link></li>
-
-                        <li><Link to={'/login'} className="px-3 ml-5 py-2 text-decoration-none text-white" >Login</Link></li>
-                        {/* <li><Link to={STUDENT_REGISTER_ROUTER} className="px-3 ml-5 py-2 text-decoration-none text-white" >Register</Link></li> */}
-
-
-                        {/* <li><Link to={STUDENTS_ROUTER} className="px-3 ml-5 py-2 text-decoration-none text-white" >Users</Link></li> */}
+                        <li>
+                            <Link
+                                to={'/'}
+                                className="px-3 ml-5 py-2 text-decoration-none text-white"
+                            >
+                                Home Page
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </header>

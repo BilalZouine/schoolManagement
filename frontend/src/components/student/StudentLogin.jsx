@@ -15,7 +15,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useStudentContext } from '../../contexts/studentContext';
 import { useNavigate } from "react-router-dom";
-import { HOME_ROUTER } from '../../route';
+import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER } from '../../route';
+import { Loader } from "lucide-react";
 
 const formSchema = yup.object({
     email: yup.string().email().required(),
@@ -24,7 +25,7 @@ const formSchema = yup.object({
 
 function StudentLogin() {
 
-    const { login } = useStudentContext()
+    const { login,setAuthenticated } = useStudentContext()
     const navigate = useNavigate();
 
     const form = useForm({
@@ -41,10 +42,9 @@ function StudentLogin() {
 
         try {
             const response = await login(data.email, data.password)
-            console.log(response);
-
-            if (response.status == 204) {
-                navigate(HOME_ROUTER)
+            if (response.status == 204 ) {
+                setAuthenticated(true)
+                navigate(STUDENT_DASHBOARD_ROUTER)
             }
 
         } catch ({ response }) {
@@ -99,7 +99,14 @@ function StudentLogin() {
                     )}
                 />
 
-                <Button type="submit" className='p-2 h-7 mx-auto bg-green-600 hover:bg-green-800 '>Submit</Button>
+                <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className='p-2 h-7 mx-auto bg-green-600 hover:bg-green-800 '
+                >
+                    {isSubmitting && <Loader className='animate-spin' />}
+                    Submit
+                </Button>
             </form>
 
         </Form>
