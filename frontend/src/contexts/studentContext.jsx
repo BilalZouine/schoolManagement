@@ -7,6 +7,7 @@ export const StudentStateContext = createContext({
     getStudent: () => { },
     logout: () => { },
     authenticated:false,
+    setStudent: () => { },
     setAuthenticated: () => { },
 });
 

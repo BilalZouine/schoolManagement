@@ -13,8 +13,6 @@ function App() {
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <RouterProvider router={router} />
         </ThemeProvider>
-
-
       </StudentContext>
 
     </>

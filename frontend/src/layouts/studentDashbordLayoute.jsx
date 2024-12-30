@@ -8,6 +8,7 @@ import { StudentApi } from '../service/api/student/studentApi';
 import { Gauge, Home, LogOut, UserCircle2 } from 'lucide-react';
 import { StudentDropdownMenu } from './StudentDropdownMenu';
 import { ModeToggle } from '../components/mode-toggle';
+import StudentAdministrationSidebar from './Administration/StudentAdministrationSidebar';
 function StudentDashboardLayout() {
     const { setStudent, setAuthenticated } = useStudentContext()
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ function StudentDashboardLayout() {
 
     return (
         <>
-            <header className="bg-white shadow-sm">
+            <header className="border-b-2 shadow-sm">
                 <div className="mx-auto flex justify-between items-center px-12 py-2 mb-4 shadow-1xl">
                     {/* Logo */}
                     <div className="text-2xl text-white font-semibold inline-flex items-center">
@@ -75,8 +76,16 @@ function StudentDashboardLayout() {
                 </div>
             </header>
 
-            <main className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <Outlet />
+            <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+                <div className="flex">
+                    <div className="w-1/4">
+                        <StudentAdministrationSidebar />
+                    </div>
+                    <div className="w-3/4">
+                        <Outlet />
+                    </div>
+
+                </div>
 
             </main>
 

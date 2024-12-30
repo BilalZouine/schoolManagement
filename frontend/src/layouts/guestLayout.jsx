@@ -18,7 +18,7 @@ function GuestLayout() {
     }, []);
     return (
         <>
-            <header className="bg-white shadow-sm">
+            <header className="border-b-2 shadow-sm">
                 <div className="mx-auto flex justify-between items-center px-12 py-2 mb-4 shadow-1xl">
                     {/* Logo */}
                     <div className="text-2xl text-white font-semibold inline-flex items-center">

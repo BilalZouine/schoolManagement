@@ -12,10 +12,10 @@ function Layout() {
 
     return (
         <>
-            <header className="bg-white shadow-sm">
+            <header className="border-b-2 shadow-sm">
                 <div className="mx-auto flex justify-between items-center 0 px-12 py-2 mb-4 shadow-1xl">
                     {/* Logo */}
-                    <div className="text-2xl text-white font-semibold inline-flex items-center">
+                    <div className="text-2xl  font-semibold inline-flex items-center">
                         <img className='h-12 mx-2' src="logo.png" alt="" />
                     </div>
                     {/* Desktop Menu Links */}
