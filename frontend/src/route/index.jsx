@@ -9,7 +9,7 @@ import NotFound from '../pages/noteFound'
 import GuestLayout from '../layouts/guestLayout'
 import StudentDashboard from '../components/student/StudentDashboard'
 import StudentLayout from '../layouts/guestLayout'
-import StudentDashboardLayout from '../layouts/student/studentDashbordLayoute'
+import StudentDashboardLayout from '../layouts/studentDashbordLayoute'
 
 
 export const HOME_ROUTER = '/'
