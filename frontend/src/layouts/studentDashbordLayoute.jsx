@@ -10,24 +10,31 @@ import { StudentDropdownMenu } from './StudentDropdownMenu';
 import { ModeToggle } from '../components/mode-toggle';
 import StudentAdministrationSidebar from './Administration/StudentAdministrationSidebar';
 function StudentDashboardLayout() {
-    const { setStudent, setAuthenticated } = useStudentContext()
+    const { setStudent, setAuthenticated, logout: contextLogout, authenticated, student } = useStudentContext()
     const navigate = useNavigate()
 
     useEffect(() => {
-        // if(!authenticated){
-        //     navigate(STUDENT_LOGIN_ROUTER)
-        //     return;
-        // }
-        StudentApi.getStudent()
-            .then((data) => {
-                setStudent(data.data)
-                setAuthenticated(true)
-            })
-            .catch((reasen) => {
-                contextLogout(false)
-                navigate(STUDENT_LOGIN_ROUTER); // Redirect to the login page
-            })
-    }, []);
+        if (authenticated) {
+
+            if (Object.keys(student).length === 0) {
+                StudentApi.getStudent()
+                    .then((data) => {
+                        setStudent(data.data)
+                        setAuthenticated(true)
+                    })
+                    .catch((reasen) => {
+                        contextLogout(false)
+                    })
+            }
+
+        } else {
+            navigate(STUDENT_LOGIN_ROUTER)
+        }
+
+    }, [authenticated]);
+    if (!authenticated) {
+        return <></>;
+    }
 
 
     return (

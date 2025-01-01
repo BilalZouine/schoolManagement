@@ -3,6 +3,7 @@ import { StudentApi } from '../service/api/student/studentApi';
 
 // إنشاء السياق
 export const StudentStateContext = createContext({
+    student:{},
     login: (email, password) => { },
     getStudent: () => { },
     logout: () => { },

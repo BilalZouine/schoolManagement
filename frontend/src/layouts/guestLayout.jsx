@@ -13,7 +13,7 @@ function GuestLayout() {
     useEffect(() => {
         if (authenticated) {
 
-            navigate(STUDENT_DASHBOARD_ROUTER); // Redirect to the login page
+           // navigate(STUDENT_DASHBOARD_ROUTER); // Redirect to the login page
         }
     }, []);
     return (

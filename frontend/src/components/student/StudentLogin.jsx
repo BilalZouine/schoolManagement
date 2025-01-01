@@ -5,7 +5,6 @@ import {
     FormField,
     FormLabel,
     FormMessage,
-    FormItem,
     Form
 
 } from "@/components/ui/form";
@@ -25,7 +24,7 @@ const formSchema = yup.object({
 
 function StudentLogin() {
 
-    const { login,setAuthenticated } = useStudentContext()
+    const { login,setAuthenticated,authenticated } = useStudentContext()
     const navigate = useNavigate();
 
     const form = useForm({
@@ -55,6 +54,9 @@ function StudentLogin() {
             }
         }
 
+    }
+    if (authenticated) {
+        // return <></>;
     }
 
     return (

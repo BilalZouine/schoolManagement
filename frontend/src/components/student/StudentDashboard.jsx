@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useStudentContext } from '../../contexts/studentContext';
-import { useNavigate } from 'react-router-dom';
-import { STUDENT_LOGIN_ROUTER } from '../../route';
 
 
 function StudentDashboard() {

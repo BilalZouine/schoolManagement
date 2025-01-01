@@ -15,15 +15,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LogOut } from "lucide-react"
 import { useStudentContext } from "../contexts/studentContext"
+import { STUDENT_LOGIN_ROUTER } from '../route';
+import { useNavigate } from 'react-router-dom';
+
 
 export function StudentDropdownMenu() {
-  const { logout: contextLogout ,student} = useStudentContext()
+
+
+  const { logout: contextLogout, student } = useStudentContext()
+  const navigate = useNavigate()
 
   const logout = () => {
     contextLogout()
     navigate(STUDENT_LOGIN_ROUTER);
   }
- 
+
 
   return (
     <DropdownMenu>
@@ -79,7 +85,7 @@ export function StudentDropdownMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout}>
           <LogOut />
-          <apan>log out</apan>
+          <span>log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

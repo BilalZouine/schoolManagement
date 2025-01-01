@@ -17,7 +17,7 @@ export const STUDENTS_ROUTER = '/students'
 export const STUDENT_LOGIN_ROUTER = '/login'
 export const STUDENT_REGISTER_ROUTER = '/register'
 export const STUDENT_LOGOUT_ROUTER = '/logout'
-export const STUDENT_DASHBOARD_ROUTER = '/dashboard'
+export const STUDENT_DASHBOARD_ROUTER = '/student/dashboard'
 export const NOT_FOUNDE_ROUTER = '*'
 export const router = createBrowserRouter([
     {
