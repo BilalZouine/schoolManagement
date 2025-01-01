@@ -20,6 +20,8 @@ function StudentDashboardLayout() {
                 StudentApi.getStudent()
                     .then((data) => {
                         setStudent(data.data)
+                        console.log(data.data);
+                        
                         setAuthenticated(true)
                     })
                     .catch((reasen) => {

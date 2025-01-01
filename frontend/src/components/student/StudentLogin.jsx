@@ -29,10 +29,6 @@ function StudentLogin() {
 
     const form = useForm({
         resolver: yupResolver(formSchema),
-        defaultValues: {
-            email: 'bilalzouine9@gmail.com',
-            password: '123456789'
-        }
     });
     const { setError, formState: { isSubmitting }, control, handleSubmit } = form
 
