@@ -1,9 +1,8 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_LOGOUT_ROUTER, STUDENT_REGISTER_ROUTER, STUDENTS_ROUTER } from '../route';
+import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_REGISTER_ROUTER } from '../route';
 import { useStudentContext } from '../contexts/studentContext';
 import { useEffect } from 'react';
 import { Home, LogIn, UserPlus } from 'lucide-react';
-import { StudentDropdownMenu } from './StudentDropdownMenu';
 import { ModeToggle } from '../components/mode-toggle';
 
 function GuestLayout() {
@@ -13,7 +12,7 @@ function GuestLayout() {
     useEffect(() => {
         if (authenticated) {
 
-           // navigate(STUDENT_DASHBOARD_ROUTER); // Redirect to the login page
+            navigate(STUDENT_DASHBOARD_ROUTER); // Redirect to the login page
         }
     }, []);
     return (

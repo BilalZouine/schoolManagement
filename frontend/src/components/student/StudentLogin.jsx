@@ -56,7 +56,7 @@ function StudentLogin() {
 
     }
     if (authenticated) {
-        // return <></>;
+         return <></>;
     }
 
     return (
