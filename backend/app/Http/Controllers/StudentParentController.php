@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentParent;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudentParentRequest;
+use App\Http\Requests\UpdateStudentParentRequest;
+use Illuminate\Http\Response;
 
 class StudentParentController extends Controller
 {
@@ -18,9 +20,10 @@ class StudentParentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStudentParentRequest $request)
     {
-        //
+        $parent = $request->all();
+        return response()->json($parent);
     }
 
     /**
@@ -34,7 +37,7 @@ class StudentParentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StudentParent $studentParent)
+    public function update(UpdateStudentParentRequest $request, StudentParent $studentParent)
     {
         //
     }

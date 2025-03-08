@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
-import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_REGISTER_ROUTER, STUDENTS_ROUTER } from '../route';
-import { useStudentContext } from '../contexts/studentContext';
+import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_REGISTER_ROUTER, STUDENTS_ROUTER } from '../router';
+import { useStudentContext } from '../context/studentContext';
 import { Gauge, Home, LogIn, UserCircle2Icon, UserPlus, UserPlus2 } from 'lucide-react';
 import { StudentDropdownMenu } from './StudentDropdownMenu';
 import { ModeToggle } from '../components/mode-toggle';

@@ -1,8 +1,8 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENTS_ROUTER } from '../route';
+import { HOME_ROUTER, NOT_FOUNDE_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENTS_ROUTER } from '../router';
 // import { HOME_PAGE_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_LOGOUT_ROUTER, STUDENT_REGISTER_ROUTER, STUDENTS_ROUTER } from '../router';
 import { Button } from '@/components/ui/button'
-import { useStudentContext } from '../contexts/studentContext';
+import { useStudentContext } from '../context/studentContext';
 import { useEffect } from 'react';
 import { StudentApi } from '../service/api/student/studentApi';
 import { Gauge, Home, LogOut, UserCircle2 } from 'lucide-react';
@@ -18,14 +18,22 @@ function StudentDashboardLayout() {
 
             if (Object.keys(student).length === 0) {
                 StudentApi.getStudent()
-                    .then((data) => {
-                        setStudent(data.data)
-                        console.log(data.data);
+                    .then(({data}) => {
+                        const { role } = data;
                         
-                        setAuthenticated(true)
+                        switch (role) {
+                            case 'student':
+                                setStudent(data)
+                                setAuthenticated(true)
+                                break;
+                            default:
+                                navigate(NOT_FOUNDE_ROUTER);
+                                break;
+
+                        }
                     })
                     .catch((reasen) => {
-                        contextLogout(false)
+                        // contextLogout(false)
                     })
             }
 

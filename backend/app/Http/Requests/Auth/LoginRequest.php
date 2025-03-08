@@ -44,15 +44,15 @@ class LoginRequest extends FormRequest
 
 
         $guards = array_keys(config("auth.guards"));
-        $connected = false;
+        $isLogge = false;
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-                $connected = true;
+                $isLogge = true;
                 break;
             }
         }
 
-        if (!$connected) {
+        if (!$isLogge) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages(messages: [

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import { router } from './route/index.jsx'
+import { router } from './router/index.jsx'
 import { RouterProvider } from 'react-router-dom'
-import StudentContext from './contexts/studentContext.jsx'
+import StudentContext from './context/studentContext.jsx'
 import { ThemeProvider } from './components/ui/theme-provider.jsx'
 
 function App() {

@@ -14,8 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { LogOut } from "lucide-react"
-import { useStudentContext } from "../contexts/studentContext"
-import { STUDENT_LOGIN_ROUTER } from '../route';
+import { useStudentContext } from "../context/studentContext"
+import { STUDENT_LOGIN_ROUTER } from '../router';
 import { useNavigate } from 'react-router-dom';
 
 

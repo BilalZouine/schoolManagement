@@ -1,18 +1,36 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_REGISTER_ROUTER } from '../route';
-import { useStudentContext } from '../contexts/studentContext';
+import { Admin_DASHBOARD_ROUTER, HOME_ROUTER, STUDENT_DASHBOARD_ROUTER, STUDENT_LOGIN_ROUTER, STUDENT_REGISTER_ROUTER, Teacher_DASHBOARD_ROUTER } from '../router';
+import { useStudentContext } from '../context/studentContext';
 import { useEffect } from 'react';
 import { Home, LogIn, UserPlus } from 'lucide-react';
 import { ModeToggle } from '../components/mode-toggle';
 
 function GuestLayout() {
     const navigate = useNavigate()
-    const { authenticated  } = useStudentContext()
+    const { authenticated, student } = useStudentContext()
 
     useEffect(() => {
         if (authenticated) {
-
             navigate(STUDENT_DASHBOARD_ROUTER); // Redirect to the login page
+            const { role } = student;
+            console.log(role);
+            
+            switch (role) {
+                case 'student':
+                    navigate(STUDENT_DASHBOARD_ROUTER)
+                    break;
+                case 'teacher':
+
+                    navigate(Teacher_DASHBOARD_ROUTER)
+                    break;
+                case 'admin':
+
+                    navigate(Admin_DASHBOARD_ROUTER)
+                    break;
+                default:
+                    break;
+
+            }
         }
     }, []);
     return (
@@ -51,9 +69,9 @@ function GuestLayout() {
                             </Link>
                         </li>
                         <li>
-                           <ModeToggle/>
+                            <ModeToggle />
                         </li>
-                        
+
                     </ul>
                 </div>
             </header>

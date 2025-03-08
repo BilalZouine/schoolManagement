@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStudentContext } from '../../contexts/studentContext';
+import { useStudentContext } from '../../context/studentContext';
 
 
 function StudentDashboard() {
